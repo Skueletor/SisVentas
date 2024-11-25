@@ -8,10 +8,8 @@ using System.Configuration;
 
 namespace CapaDatos
 {
-    public class Conexion
+    internal class Conexion
     {
         public static string cadena = ConfigurationManager.ConnectionStrings["cadena_conexion"].ToString();
-
     }
-
 }

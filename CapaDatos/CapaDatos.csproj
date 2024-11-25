@@ -4,15 +4,14 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{563F60C8-E2FB-4F83-B355-010B705CD14F}</ProjectGuid>
+    <ProjectGuid>{D7930E00-91E3-4E52-9CED-8864FCA249D0}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>CapaDatos</RootNamespace>
     <AssemblyName>CapaDatos</AssemblyName>
-    <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <Deterministic>true</Deterministic>
-    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -44,22 +43,14 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="CD_Categoria.cs" />
-    <Compile Include="CD_Cliente.cs" />
-    <Compile Include="CD_Compra.cs" />
-    <Compile Include="CD_Negocio.cs" />
     <Compile Include="CD_Permiso.cs" />
-    <Compile Include="CD_Producto.cs" />
-    <Compile Include="CD_Proveedor.cs" />
-    <Compile Include="CD_Reporte.cs" />
     <Compile Include="CD_Usuario.cs" />
-    <Compile Include="CD_Rol.cs" />
-    <Compile Include="CD_Venta.cs" />
     <Compile Include="Conexion.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\CapaEntidad\CapaEntidad.csproj">
-      <Project>{e4fdc1a1-483f-44a0-a328-596d29eb7629}</Project>
+    <ProjectReference Include="..\CapaEntidades2\CapaEntidad.csproj">
+      <Project>{40e0b02e-2eb1-4442-b888-413289da7983}</Project>
       <Name>CapaEntidad</Name>
     </ProjectReference>
   </ItemGroup>
