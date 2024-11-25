@@ -35,7 +35,11 @@ namespace CapaNegocio
 
             if (obj.Correo == "")
             {
-                Mensaje += "Es necesario la correo del Proveedor\n";
+                Mensaje += "Es necesario el correo del Proveedor\n";
+            }
+            if (obj.Telefono == "")
+            {
+                Mensaje += "Es necesario el telefono del Proveedor\n";
             }
 
             if (Mensaje != string.Empty)

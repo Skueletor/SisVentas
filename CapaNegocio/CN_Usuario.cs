@@ -19,11 +19,12 @@ namespace CapaNegocio
             return objcd_usuario.Listar();
         }
 
-        public int Registrar(Usuario obj,out string Mensaje)
+        public int Registrar(Usuario obj, out string Mensaje)
         {
             Mensaje = string.Empty;
 
-            if (obj.Documento == "") {
+            if (obj.Documento == "")
+            {
                 Mensaje += "Es necesario el documento del usuario\n";
             }
 
@@ -31,7 +32,7 @@ namespace CapaNegocio
             {
                 Mensaje += "Es necesario el nombre completo del usuario\n";
             }
-            
+
             if (obj.Clave == "")
             {
                 Mensaje += "Es necesario la clave del usuario\n";
@@ -41,11 +42,12 @@ namespace CapaNegocio
             {
                 return 0;
             }
-            else {
+            else
+            {
                 return objcd_usuario.Registrar(obj, out Mensaje);
             }
 
-            
+
         }
 
 
@@ -79,7 +81,7 @@ namespace CapaNegocio
                 return objcd_usuario.Editar(obj, out Mensaje);
             }
 
-            
+
         }
 
 

@@ -28,7 +28,7 @@ namespace CapaDatos
                     query.AppendLine("inner join USUARIO u on u.IdRol = r.IdRol");
                     query.AppendLine("where u.IdUsuario = @idusuario");
 
-                   
+
                     SqlCommand cmd = new SqlCommand(query.ToString(), oconexion);
                     cmd.Parameters.AddWithValue("@idusuario", idusuario);
                     cmd.CommandType = CommandType.Text;
@@ -43,7 +43,7 @@ namespace CapaDatos
 
                             lista.Add(new Permiso()
                             {
-                                oRol = new Rol() { IdRol = Convert.ToInt32(dr["IdRol"]) } ,
+                                oRol = new Rol() { IdRol = Convert.ToInt32(dr["IdRol"]) },
                                 NombreMenu = dr["NombreMenu"].ToString(),
                             });
 

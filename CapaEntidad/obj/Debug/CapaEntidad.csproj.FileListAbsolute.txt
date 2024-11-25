@@ -1,0 +1,6 @@
+Z:\Desarrollo de Sistemas I\CapaEntidad\bin\Debug\CapaEntidad.dll
+Z:\Desarrollo de Sistemas I\CapaEntidad\bin\Debug\CapaEntidad.pdb
+Z:\Desarrollo de Sistemas I\CapaEntidad\obj\Debug\CapaEntidad.csproj.AssemblyReference.cache
+Z:\Desarrollo de Sistemas I\CapaEntidad\obj\Debug\CapaEntidad.csproj.CoreCompileInputs.cache
+Z:\Desarrollo de Sistemas I\CapaEntidad\obj\Debug\CapaEntidad.dll
+Z:\Desarrollo de Sistemas I\CapaEntidad\obj\Debug\CapaEntidad.pdb

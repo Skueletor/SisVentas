@@ -1,10 +1,10 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{563F60C8-E2FB-4F83-B355-010B705CD14F}</ProjectGuid>
+    <ProjectGuid>{018A8437-7A49-4EC7-8816-C0FB3A2833DD}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>CapaDatos</RootNamespace>
@@ -12,7 +12,6 @@
     <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <Deterministic>true</Deterministic>
-    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -43,23 +42,16 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="CD_Categoria.cs" />
-    <Compile Include="CD_Cliente.cs" />
-    <Compile Include="CD_Compra.cs" />
-    <Compile Include="CD_Negocio.cs" />
-    <Compile Include="CD_Permiso.cs" />
-    <Compile Include="CD_Producto.cs" />
+    <Compile Include="CD_PERMISO.cs" />
     <Compile Include="CD_Proveedor.cs" />
-    <Compile Include="CD_Reporte.cs" />
+    <Compile Include="CD_rol.cs" />
     <Compile Include="CD_Usuario.cs" />
-    <Compile Include="CD_Rol.cs" />
-    <Compile Include="CD_Venta.cs" />
     <Compile Include="Conexion.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\CapaEntidad\CapaEntidad.csproj">
-      <Project>{e4fdc1a1-483f-44a0-a328-596d29eb7629}</Project>
+      <Project>{cf425003-ed2f-4b77-9999-e8fa57350cf6}</Project>
       <Name>CapaEntidad</Name>
     </ProjectReference>
   </ItemGroup>

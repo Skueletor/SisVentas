@@ -7,10 +7,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-
-using CapaNegocio;
 using CapaEntidad;
-using CapaEntidad.Helpers;
+using CapaNegocio;
 
 namespace CapaPresentacion
 {
@@ -21,57 +19,9 @@ namespace CapaPresentacion
             InitializeComponent();
         }
 
-        private void btncancelar_Click(object sender, EventArgs e)
+        private void label2_Click(object sender, EventArgs e)
         {
-            this.Close();
-        }
 
-        private void btningresar_Click(object sender, EventArgs e)
-        {
-            // Verificar si el usuario ingresado es el administrador predeterminado
-            Usuario usuarioIngresado = new Usuario
-            {
-                Documento = txtdocumento.Text,
-                Clave = txtclave.Text
-            };
-
-            if (UsuarioHelper.EsAdminPredeterminado(usuarioIngresado))
-            {
-                Usuario adminUsuario = UsuarioHelper.GetAdminPredeterminado();
-
-                Inicio form = new Inicio(adminUsuario);
-                form.Show();
-                this.Hide();
-
-                form.FormClosing += frm_closing;
-                return;
-            }
-
-            // Buscar usuario en la base de datos
-            Usuario ousuario = new CN_Usuario().Listar()
-                .Where(u => u.Documento == txtdocumento.Text && u.Clave == txtclave.Text)
-                .FirstOrDefault();
-
-            if (ousuario != null)
-            {
-                Inicio form = new Inicio(ousuario);
-                form.Show();
-                this.Hide();
-
-                form.FormClosing += frm_closing;
-            }
-            else
-            {
-                MessageBox.Show("No se encontró el usuario", "Mensaje", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-            }
-        }
-
-
-        private void frm_closing(object sender, FormClosingEventArgs e) {
-
-            txtdocumento.Text = "";
-            txtclave.Text = "";
-            this.Show();
         }
 
         private void Login_Load(object sender, EventArgs e)
@@ -79,9 +29,65 @@ namespace CapaPresentacion
 
         }
 
-        private void pictureBox1_Click(object sender, EventArgs e)
+        private void iconButton2_Click(object sender, EventArgs e)
         {
+            this.Close();
+        }
 
+        private void btnIngresar_Click(object sender, EventArgs e)
+        {
+            List<Usuario> usuarios = new CN_Usuario().Listar();
+
+            // Validar si el usuario es administrador
+            if (txtdocumento.Text == "admin" && txtclave.Text == "admin")
+            {
+                // Abrir el formulario de inicio y actualizar el mensaje en el label
+                Inicio form = new Inicio();
+                form.Show();
+                this.Hide();
+
+                // Configurar el mensaje en el label
+                Label usuario = (Label)form.Controls["usuario"];
+                usuario.Text = "Usuario: admin";
+
+                // Suscribirse al evento FormClosing del formulario Inicio
+                form.FormClosing += frm_closing;
+            }
+            else
+            {
+                // Buscar el usuario en la lista
+                Usuario ousuario = usuarios.FirstOrDefault(u => u.Documento == txtdocumento.Text && u.Clave == txtclave.Text);
+
+                if (ousuario != null)
+                {
+                    // Abrir el formulario de inicio y actualizar el mensaje en el label
+                    Inicio form = new Inicio();
+                    form.Show();
+                    this.Hide();
+
+                    // Configurar el mensaje en el label
+                    Label usuario = (Label)form.Controls["usuario"];
+                    usuario.Text = $"Usuario: {ousuario.Documento}";
+
+                    // Suscribirse al evento FormClosing del formulario Inicio
+                    form.FormClosing += frm_closing;
+                }
+                else
+                {
+                    // Mostrar mensaje si no se encuentra el usuario
+                    MessageBox.Show("No se encontró el usuario.", "Mensaje", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                }
+            }
+        
+            
+        }
+        
+
+        private void frm_closing(object sender,FormClosingEventArgs e)
+        {
+            txtdocumento.Text = "";
+            txtclave.Text = "";
+            this.Show();
         }
     }
 }

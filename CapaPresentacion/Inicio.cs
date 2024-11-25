@@ -10,61 +10,30 @@ using System.Windows.Forms;
 
 using CapaEntidad;
 using CapaNegocio;
-using CapaPresentacion.Modales;
 using FontAwesome.Sharp;
-using CapaEntidad.Helpers;
-
 
 namespace CapaPresentacion
 {
     public partial class Inicio : Form
     {
-
-        private static Usuario usuarioActual;
         private static IconMenuItem MenuActivo = null;
         private static Form FormularioActivo = null;
-
-
-        public Inicio(Usuario objusuario = null)
+        public Inicio()
         {
-            //if (objusuario == null)
-            //    usuarioActual = new Usuario() { NombreCompleto ="ADMIN PREDEFINIDO",IdUsuario = 1 };
-            //else
-            //    usuarioActual = objusuario;
-            usuarioActual = objusuario ?? UsuarioHelper.GetAdminPredeterminado();
-
             InitializeComponent();
         }
-
-        private void Inicio_Load(object sender, EventArgs e)
+        private void AbrirFormulario(IconMenuItem menu, Form formulario)
         {
-            List<Permiso> ListaPermisos = new CN_Permiso().Listar(usuarioActual.IdUsuario);
 
-            foreach (IconMenuItem iconmenu in menu.Items) {
-
-                bool encontrado = ListaPermisos.Any(m => m.NombreMenu == iconmenu.Name);
-
-                if (encontrado == false) {
-                    iconmenu.Visible = false;
-                }
-
-            }
-
-
-
-            lblusuario.Text = usuarioActual.NombreCompleto;
-        }
-
-
-        private void AbrirFormulario(IconMenuItem menu, Form formulario) {
-
-            if (MenuActivo != null) {
+            if (MenuActivo != null)
+            {
                 MenuActivo.BackColor = Color.White;
             }
             menu.BackColor = Color.Silver;
             MenuActivo = menu;
 
-            if (FormularioActivo != null) {
+            if (FormularioActivo != null)
+            {
                 FormularioActivo.Close();
             }
 
@@ -79,84 +48,29 @@ namespace CapaPresentacion
 
 
         }
+        
 
-
-        private void menuusuarios_Click(object sender, EventArgs e)
+        private void menutitulo_ItemClicked(object sender, ToolStripItemClickedEventArgs e)
         {
-            AbrirFormulario((IconMenuItem)sender, new frmUsuarios());
+
         }
 
-        private void submenucategoria_Click(object sender, EventArgs e)
+        private void iconMenuItem4_Click(object sender, EventArgs e)
         {
-            AbrirFormulario(menumantenedor, new frmCategoria());
-        }
 
-        private void submenuproducto_Click(object sender, EventArgs e)
-        {
-            AbrirFormulario(menumantenedor, new frmProducto());
-        }
-
-        private void submenuregistrarventa_Click(object sender, EventArgs e)
-        {
-            AbrirFormulario(menuventas, new frmVentas(usuarioActual));
-        }
-
-        private void submenuverdetalleventa_Click(object sender, EventArgs e)
-        {
-            AbrirFormulario(menuventas, new frmDetalleVenta());
-        }
-
-        private void submenuregistrarcompra_Click(object sender, EventArgs e)
-        {
-            AbrirFormulario(menucompras, new frmCompras(usuarioActual));
-        }
-
-        private void submenutverdetallecompra_Click(object sender, EventArgs e)
-        {
-            AbrirFormulario(menucompras, new frmDetalleCompra());
-        }
-
-        private void menuclientes_Click(object sender, EventArgs e)
-        {
-            AbrirFormulario((IconMenuItem)sender, new frmClientes());
         }
 
         private void menuproveedores_Click(object sender, EventArgs e)
         {
-            AbrirFormulario((IconMenuItem)sender, new frmProveedores());
+            AbrirFormulario((IconMenuItem)sender, new FrmProveedores());
         }
 
-
-
-        private void submenunegocio_Click(object sender, EventArgs e)
+        private void menuusuario_Click(object sender, EventArgs e)
         {
-            AbrirFormulario(menumantenedor, new frmNegocio());
+            AbrirFormulario((IconMenuItem)sender, new FrmUsuarios());
         }
 
-        private void submenureportecompras_Click(object sender, EventArgs e)
-        {
-            AbrirFormulario(menureportes, new frmReporteCompras());
-        }
-
-        private void submenureporteventas_Click(object sender, EventArgs e)
-        {
-            AbrirFormulario(menureportes, new frmReporteVentas());
-        }
-
-        private void menuacercade_Click(object sender, EventArgs e)
-        {
-            mdAcercade md = new mdAcercade();
-            md.ShowDialog();
-        }
-
-        private void btnsalir_Click(object sender, EventArgs e)
-        {
-            if (MessageBox.Show("¿Desea salir?", "Mensaje", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes) { 
-                this.Close();
-            }
-        }
-
-        private void menu_ItemClicked(object sender, ToolStripItemClickedEventArgs e)
+        private void usuario_Click(object sender, EventArgs e)
         {
 
         }
