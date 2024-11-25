@@ -6,7 +6,7 @@ using System.Windows.Forms;
 
 namespace CapaPresentacion
 {
-    static class Program
+    internal static class Program
     {
         /// <summary>
         /// Punto de entrada principal para la aplicación.
@@ -14,7 +14,6 @@ namespace CapaPresentacion
         [STAThread]
         static void Main()
         {
-            System.Threading.Thread.CurrentThread.CurrentCulture = new System.Globalization.CultureInfo("es-PE");
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             Application.Run(new Login());
